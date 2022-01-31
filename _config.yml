@@ -1,28 +1,23 @@
-title: Jekyll Serial Programmer
-markdown: kramdown
-url: "flyingtongue.github.io"
-baseurl: "/github.io"
+title: the Simplex theme
+logo_img: /assets/img/icons/golasblog_logo.svg
+favicon: /assets/favicon.ico
+description: description
+global_tags: jekyll theme simplex golasblog responsive html5
+copyright: © Golasowski 2021
 
-# for atom feed
-author:
-  name: Cody  
-  email: cody@cody.com 
+sass:
+    style: compressed
 
-plugins:
-  - jemoji
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-feed
-
-collections_dir: all_collections
 collections:
-  posts:
-    output: true
+    category:
+        output: true
+    authors:
+        output: false
 
 defaults:
-  - scope:
-      path: "_posts"
+  -
+    scope:
+      path: ""
+      type: category
     values:
-      layout: "post"
-      permalink: /posts/:title/
-exclude: ["sitemap.xml", "feed.xml", "LICENSE", "README.md"]
+      layout: "category"

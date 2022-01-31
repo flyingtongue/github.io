@@ -1,17 +1,49 @@
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{site.title}} | {{page.title}}</title>
-  {% if page.layout == "post" %}
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/post.css" />
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/syntax.css" />
-  {% else %}
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/blog.css" />
-  {%endif%}
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/common.css" />
-  <script src="{{site.baseurl}}/assets/js/categories.js"></script>
-  {% if page.layout == "post" %}
-  <script defer src="{{site.baseurl}}/assets/js/lbox.js"></script>
-  {% endif %}
-</head>
+<link rel="stylesheet" href="{{ site.url }}/assets/fonts/fonts.css"/>
+<link rel="stylesheet" href="{{ site.url }}/assets/style.css"/>
+<link rel="stylesheet" href="{{ site.url }}/assets/js/lity.min.css"/>
+
+{% if site.favicon != nil %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ site.favicon }}' />
+{% endif %}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="og:site_name" content="{{ site.title }}" />
+<meta 
+    property="og:title"
+    content="
+        {% if page.title != nil %}
+            {{page.title}}
+        {% else %}
+            {{site.title}}
+        {% endif %}
+    " 
+/>
+{% if page.og_description != nil %}
+    <meta property="og:description" content="{{ page.og_description }}" />
+{% endif %}
+<meta property="og:url" content="{{ site.url }}/{{ page.url }}" />
+{% if page.og_type != nil %}
+    <meta property="og:type" content="{{ page.og_type }}" />
+{% else %}
+    <meta property="og:type" content="article" />
+{% endif %}
+{% if page.og_image != nil %}
+    <meta property="og:image" content="{{ site.url }}/{{ page.og_image }}" />
+    <meta property="og:image:secure_url" content="{{ site.url }}/{{ page.og_image }}" />
+{% endif %}
+{% if page.fb_app_id != nil %}
+    <meta property="fb:app_id" content="{{ page.fb_app_id }}" />
+{% else if site.fb_app_id != nil %}
+    <meta property="fb:app_id" content="{{ site.fb_app_id }}" />
+{% endif %}
+
+
+<title>
+    {% if page.title != nil %}
+        {{page.title}}
+    {% else %}
+        {{site.title}}
+    {% endif %}
+</title>
